@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-light bg-light">
-       <img src="../public/survey-check2.jpg" alt="..." height="50">
+       <img src="../public/survey-check2.jpg" alt="..." height="65">
       <a href="/" class="navbar-brand">SurveyBuilder</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -50,6 +50,11 @@ export default {
 
 .navbar-dark .navbar-nav .nav-link {
 color: rgb(255 255 255 / 83%) !important;
+}
+
+.navbar-brand{
+  font-size: 1.5rem !important;
+  font-weight:800;
 }
 
 </style>
