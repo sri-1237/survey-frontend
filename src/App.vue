@@ -10,13 +10,13 @@
           </router-link>
         </li>
 
-        <li v-if="showAdminBoard" class="nav-item">
-          <router-link to="/admin" class="nav-link">Admin Board</router-link>
-        </li>
-        <li v-if="showGuestBoard" class="nav-item">
-          <router-link to="/mod" class="nav-link">Guest Board</router-link>
+        <li v-if="showSuperAdminBoard" class="nav-item">
+          <router-link to="/admin" class="nav-link">All Surveys</router-link>
         </li>
         <li v-if="showAdminBoard" class="nav-item">
+          <router-link to="/mod" class="nav-link">Surveys</router-link>
+        </li>
+        <li v-if="showSuperAdminBoard" class="nav-item">
           <router-link to="/adduser" class="nav-link">Users</router-link>
         </li>
         <li v-else class="nav-item">
@@ -69,16 +69,16 @@ export default {
     currentUser() {
       return this.$store.state.auth.user;
     },
-    showAdminBoard() {
+    showSuperAdminBoard() {
       if (this.currentUser && this.currentUser['roles']) {
-        return this.currentUser['roles'].includes('ROLE_ADMIN');
+        return this.currentUser['roles'].includes('ROLE_SUPERADMIN');
       }
 
       return false;
     },
-    showGuestBoard() {
+    showAdminBoard() {
       if (this.currentUser && this.currentUser['roles']) {
-        return this.currentUser['roles'].includes('ROLE_GUEST');
+        return this.currentUser['roles'].includes('ROLE_ADMIN');
       }
 
       return false;

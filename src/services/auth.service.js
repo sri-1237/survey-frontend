@@ -2,6 +2,13 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8080/api/auth/';
 
+// let axiosConfig = {
+//   headers: {
+//       'Content-Type': 'application/json;charset=UTF-8',
+//       "Access-Control-Allow-Origin": "*",
+//   }
+// };
+
 class AuthService {
   login(user) {
     return axios

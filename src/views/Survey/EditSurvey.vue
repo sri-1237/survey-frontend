@@ -15,13 +15,27 @@ const creatorOptions = {
 
 
 export default {
-  name: "survey-creator",
+  name: "edit-survey-creator",
+  props: ['id'],
   mounted() {
-    const creator = new SurveyCreator(creatorOptions);  
+    const creator = new SurveyCreator(creatorOptions);
+    console.log("iiiiiiii",this.id);
+    if(this.id){
+       SurveyDataService.get(this.id)
+        .then(response => {
+           console.log("respp",JSON.stringify(response.data["json"]));
+           creator.text = JSON.stringify(response.data["json"]);
+        })
+      //  creator.text = window.localStorage.getItem("survey-json");
+console.log("gggggg",window.localStorage.getItem("survey-json"))
+
+    }
    
     creator.saveSurveyFunc = (saveNo, callback) => { 
-      // window.localStorage.setItem("survey-json", creator.text);
+      window.localStorage.setItem("survey-json", creator.text);
       callback(saveNo, true);
+      console.log("jjjjj...",creator.JSON.title)
+      console.log("jjjjj...",creator.text)
        SurveyDataService.createSurvey(creator.JSON.title, creator.text)
         .then(response => {
            this.$router.push('/admin');
