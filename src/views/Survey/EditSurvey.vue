@@ -36,7 +36,7 @@ console.log("gggggg",window.localStorage.getItem("survey-json"))
       callback(saveNo, true);
       console.log("jjjjj...",creator.JSON.title)
       console.log("jjjjj...",creator.text)
-       SurveyDataService.createSurvey(creator.JSON.title, creator.text)
+       SurveyDataService.update(this.id, creator.JSON.title, creator.text)
         .then(response => {
            this.$router.push('/admin');
         })

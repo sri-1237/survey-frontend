@@ -4,15 +4,15 @@ class SurveyDataService {
     return http.get("/surveys");
   }
 
-  createSurvey(name,data) {
-    return http.post(`/surveys?name=${name}&createdBy=1`, data);
+  createSurvey(name,data,id) {
+    return http.post(`/surveys?name=${name}&createdBy=${id}`, data);
   }
   get(id) {
     return http.get(`/surveys/${id}`);
   }
 
   update(id, name, data) {
-    return http.put(`/surveys/${id}?title=${name}`, data);
+    return http.put(`/surveys/${id}?name=${name}`, data);
   }
   delete(id) {
     return http.delete(`/surveys/${id}`);

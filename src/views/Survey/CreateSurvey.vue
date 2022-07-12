@@ -22,7 +22,7 @@ export default {
     creator.saveSurveyFunc = (saveNo, callback) => { 
       // window.localStorage.setItem("survey-json", creator.text);
       callback(saveNo, true);
-       SurveyDataService.createSurvey(creator.JSON.title, creator.text)
+       SurveyDataService.createSurvey(creator.JSON.title, creator.text,this.$store.state.auth.user.id)
         .then(response => {
            this.$router.push('/admin');
         })
