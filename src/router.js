@@ -4,6 +4,8 @@ import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 
+import EditSurvey from './views/Survey/EditSurvey.vue';
+
 Vue.use(Router);
 
 export const router = new Router({
@@ -62,6 +64,19 @@ export const router = new Router({
       // lazy-loaded
       component: () => import('./views/Survey/CreateSurvey.vue')
     },
+    {
+      path: "/edit/:id",
+      name: "editSurvey",
+      component: () => import('./views/Survey/EditSurvey.vue'),
+      props: true
+    },
+    {
+      path: "/view/:id",
+      name: "viewSurvey",
+      component: () => import("./views/Survey/ViewSurvey.vue"),
+      props: true
+  },
+
   ]
 });
 
