@@ -1,5 +1,6 @@
 import axios from 'axios';
 import authHeader from './auth-header';
+import http from "../http-common";
 
 const API_URL = 'http://localhost:8080/api/test/';
 
@@ -18,6 +19,25 @@ class UserService {
 
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
+  }
+
+
+  getAll() {
+    return http.get("/users");
+  }
+
+  // createSurvey(name,data,id) {
+  //   return http.post(`/users?name=${name}&createdBy=${id}`, data);
+  // }
+  get(id) {
+    return http.get(`/users/${id}`);
+  }
+
+  // update(id, name, data) {
+  //   return http.put(`/users/${id}?name=${name}`, data);
+  // }
+  delete(id) {
+    return http.delete(`/users/${id}`);
   }
 }
 

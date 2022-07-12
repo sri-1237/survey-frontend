@@ -3,7 +3,7 @@
     <div class="surveyListHeader">
       <h2>Surveys</h2>
     
-   <button type="button" class="btn btn-outline-primary float-right" style="margin-left:75%;" @click="createSurvey">Add New Survey</button>
+   <button type="button" class="btn btn-outline-primary float-right" style="margin-left:75%;" @click="createSurvey">+Add New Survey</button>
     </div>
     
       <SurveyList />

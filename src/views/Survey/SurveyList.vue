@@ -3,15 +3,18 @@
         <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config">
        
      <template slot="actions" slot-scope="props">
-         <b-button variant="info" class="mr-3" size="sm" @click="View(props.row)">
+      <button class="btn btn-primary btn-circle m-1" @click="View(props.row)"><i class="fa fa-eye"></i></button>
+          <button class="btn btn-default btn-circle m-1" @click="Edit(props.row)"><i class="fa fa-pencil-square-o"></i></button>
+          <button class="btn btn-danger btn-circle m-1" @click="Delete(props.row)"><i class="fa fa-trash-o"></i></button>
+         <!-- <b-button variant="info" class="mr-3" size="sm" >
         View
       </b-button>
-      <b-button size="sm" class="mr-3" @click="Edit(props.row)">
+      <b-button size="sm" class="mr-3" >
         Edit
       </b-button>
-      <b-button variant="danger" size="sm" @click="Delete(props.row)">
+      <b-button variant="danger" size="sm" >
         Delete
-      </b-button>
+      </b-button> -->
        </template>
         </vue-bootstrap4-table>
     </div>
