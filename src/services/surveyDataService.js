@@ -10,6 +10,13 @@ class SurveyDataService {
   get(id) {
     return http.get(`/surveys/${id}`);
   }
+
+  update(id, name, data) {
+    return http.put(`/surveys/${id}?title=${name}`, data);
+  }
+  delete(id) {
+    return http.delete(`/surveys/${id}`);
+  }
 //   create(data) {
 //     return http.post("/albums", data);
 //   }

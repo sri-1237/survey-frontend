@@ -3,14 +3,16 @@
         <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config">
        
      <template slot="actions" slot-scope="props">
-        <b-button size="sm">
-           Edit
-        </b-button>
-        
-    </template>
-     <template slot="actions" slot-scope="props"><b-button size="sm" @click="editSurvey(props.row)">
-          Edit
-        </b-button></template>
+         <b-button variant="info" class="mr-3" size="sm" @click="View(props.row)">
+        View
+      </b-button>
+      <b-button size="sm" class="mr-3" @click="Edit(props.row)">
+        Edit
+      </b-button>
+      <b-button variant="danger" size="sm" @click="Delete(props.row)">
+        Delete
+      </b-button>
+       </template>
         </vue-bootstrap4-table>
     </div>
 </template>
@@ -79,9 +81,24 @@ export default {
           console.log("survey1111..",response.data);
         })
     },
-    editSurvey(survey){
-      console.log("sssss",survey);
-      this.$router.push({ name: 'editsurvey', params: { id: survey.id } });
+   View(survey) {
+
+      this.$router.push({ name: 'viewSurvey', params: { id: survey.id } });
+    },
+    Edit(survey) {
+
+      this.$router.push({ name: 'editSurvey', params: { id: survey.id } });
+    },
+
+    Delete(survey) {
+      SurveyDataService.delete(survey.id)
+        .then(() => {
+          this.retrieveSurveys();
+          // this.$router.push({ name: 'Home' });
+        })
+        .catch(e => {
+          this.message = e.response.data.message;
+        });
     },
    
     },

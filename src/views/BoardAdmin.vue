@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <h2>Surveys</h2>
+    <div class="surveyListHeader">
+      <h2>Surveys</h2>
     
-   <button type="button" class="btn btn-outline-primary" @click="createSurvey">Add New Survey</button>
+   <button type="button" class="btn btn-outline-primary float-right" style="margin-left:75%;" @click="createSurvey">Add New Survey</button>
+    </div>
+    
       <SurveyList />
   </div>
 </template>
@@ -39,3 +42,10 @@ export default {
    }
 };
 </script>
+
+<style scoped>
+.surveyListHeader{
+  display: inline-flex;
+  width:100%;
+}
+</style>

@@ -65,11 +65,17 @@ export const router = new Router({
       component: () => import('./views/Survey/CreateSurvey.vue')
     },
     {
-      path: "/survey/:id",
-      name: "editsurvey",
-      component: EditSurvey,
+      path: "/edit/:id",
+      name: "editSurvey",
+      component: () => import('./views/Survey/EditSurvey.vue'),
       props: true
     },
+    {
+      path: "/view/:id",
+      name: "viewSurvey",
+      component: () => import("./views/Survey/ViewSurvey.vue"),
+      props: true
+  },
 
   ]
 });
