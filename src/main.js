@@ -1,42 +1,64 @@
-import Vue from 'vue';
-import App from './App.vue';
-import { router } from './router';
-import store from './store';
+// =========================================================
+// * Vue Material Dashboard - v1.5.0
+// =========================================================
+//
+// * Product Page: https://www.creative-tim.com/product/vue-material-dashboard
+// * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+// * Licensed under MIT (https://github.com/creativetimofficial/vue-material-dashboard/blob/master/LICENSE.md)
+//
+// * Coded by Creative Tim
+//
+// =========================================================
+//
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from "vue";
+import VueRouter from "vue-router";
+import App from "./App";
+
+// router setup
+import routes from "./routes/routes";
+
+// Plugins
+import GlobalComponents from "./globalComponents";
+import GlobalDirectives from "./globalDirectives";
+import Notifications from "./components/NotificationPlugin";
+
+// MaterialDashboard plugin
+import MaterialDashboard from "./material-dashboard";
+
+import Chartist from "chartist";
+
+import "survey-core/defaultV2.min.css";
+import "survey-creator-core/survey-creator-core.min.css";
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import VeeValidate from 'vee-validate';
-import Vuex from 'vuex';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-  faHome,
-  faUser,
-  faUserPlus,
-  faSignInAlt,
-  faSignOutAlt
-} from '@fortawesome/free-solid-svg-icons';
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-// Import Bootstrap an BootstrapVue CSS files (order is important)
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+import store from './store';
 
-library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
+// configure router
+const router = new VueRouter({
+  routes, // short for routes: routes
+  linkExactActiveClass: "nav-item active",
+});
 
-Vue.config.productionTip = false;
+Vue.prototype.$Chartist = Chartist;
 
-Vue.use(VeeValidate);
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(VueRouter);
+Vue.use(MaterialDashboard);
+Vue.use(GlobalComponents);
+Vue.use(GlobalDirectives);
+Vue.use(Notifications);
 
-Vue.use(Vuex);
-
+/* eslint-disable no-new */
 new Vue({
+  el: "#app",
+  render: (h) => h(App),
   router,
   store,
-  render: h => h(App)
-}).$mount('#app');
-
+  data: {
+    Chartist: Chartist,
+  },
+});
