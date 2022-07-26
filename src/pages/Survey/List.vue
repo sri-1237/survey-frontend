@@ -16,9 +16,9 @@
                 
             </md-table-toolbar>
 
-            <md-table-empty-state md-label="No users found"
-                :md-description="`No user found for this '${search}' query. Try a different search term or create a new user.`">
-                <md-button class="md-primary md-raised" @click="newUser">Create New User</md-button>
+            <md-table-empty-state md-label="No surveys found"
+                :md-description="`No survey found for this '${search}' query. Try a different search term or create a new survey.`">
+                <md-button class="md-primary md-raised" @click="createSurvey()">Create New Survey</md-button>
             </md-table-empty-state>
 
             <md-table-row slot="md-table-row" slot-scope="{ item }">

@@ -3,6 +3,7 @@ import authHeader from './auth-header';
 import http from "../http-common";
 
 const API_URL = 'http://localhost:8080/api/test/';
+const USER_URL = "http://localhost:8080/api/auth";
 
 class UserService {
   getPublicContent() {
@@ -21,24 +22,22 @@ class UserService {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
 
-
-  getAll() {
-    return http.get("/users");
+  getAll(){
+    return axios.get(USER_URL);
   }
 
-  // createSurvey(name,data,id) {
-  //   return http.post(`/users?name=${name}&createdBy=${id}`, data);
-  // }
-  get(id) {
-    return http.get(`/users/${id}`);
+  findUser(name){
+    return axios.get(USER_URL + `?username=${name}`);
   }
 
-  // update(id, name, data) {
-  //   return http.put(`/users/${id}?name=${name}`, data);
-  // }
-  delete(id) {
-    return http.delete(`/users/${id}`);
+  delete(id){
+    return axios.delete(USER_URL + `/${id}`);
   }
+
+  updateRole(id, data){
+    return axios.put(USER_URL+ `/${id}`, data);
+  }
+
 }
 
 export default new UserService();

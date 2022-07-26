@@ -11,10 +11,10 @@
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/user">
+      <!-- <sidebar-link to="/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>
-      </sidebar-link>
+      </sidebar-link> -->
        <sidebar-link to="/all-users">
         <md-icon>person</md-icon>
         <p>Users</p>
